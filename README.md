@@ -59,6 +59,7 @@ Output property 'output' file .../lib/build/intermediates/compile_library_classe
 
 Then we change name for nested class again (`NestedClass` -> `NestedClassChanged`) and look for **most important part**:
 
+```
 > Task :lib:bundleLibCompileToJarDebug
 Caching disabled for task ':lib:bundleLibCompileToJarDebug' because:
 Build cache is disabled
@@ -67,12 +68,15 @@ Input property 'classes' file .../lib/build/intermediates/javac/debug/classes/my
 Input property 'classes' file .../lib/build/intermediates/javac/debug/classes/my/lib/OuterClass__Factory.class has been added.
 Input property 'classes' file .../lib/build/intermediates/javac/debug/classes/my/lib/OuterClass__Factory.class has been removed.
 :lib:bundleLibCompileToJarDebug (Thread[Execution worker for ':',5,main]) completed. Took 0.007 secs.
+```
 
 Detected changes:
 
->OuterClass$NestedClass__Factory.class has been removed.
+```
+OuterClass$NestedClass__Factory.class has been removed.
 OuterClass__Factory.class has been added.
 OuterClass__Factory.class has been removed.
+```
 
 For some reason Gradle hasn't detected addition of `OuterClass$NestedClass__Factory.class` as an input for `:lib:bundleLibCompileToJarDebug`
 
